@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     async getNfts() {
-      const nfts = await axios.get(`${config.api}/api/blockchain/ethereum/nft/get-all-nfts?offset=20`).then(res => res.data);
+      const nfts = await axios.get(`${config.api}/api/blockchain/ethereum/nft/get-nfts-by-collection?offset=20`).then(res => res.data);
       const metadatas = await Promise.all(nfts.map(async (e) => {
         const res = await this.getMetadataFromTokenUri(e.token_uri);
         return {
